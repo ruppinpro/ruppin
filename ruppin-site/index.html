@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Руппин — продакшн-агентство полного цикла</title>
+
+<meta name="description" content="Руппин — продакшн-агентство полного цикла. Съёмка мероприятий, реклама, музыкальные клипы, мини-сериалы, короткометражные фильмы, сценарии, музыка и постпродакшн.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Marck+Script&display=swap" rel="stylesheet">
+
+<style>
+:root {
+--dark: #111a20;
+--dark-2: #0d1419;
+--dark-3: #080d10;
+--milk: #f2eee5;
+--milk-2: #e7dfd1;
+--gold: #c7a45a;
+--gold-soft: #a98b4a;
+--text: #f7f1e6;
+--muted: #b9ad98;
+--line: rgba(199, 164, 90, 0.35);
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: 'Manrope', Arial, sans-serif;
+background: var(--dark);
+color: var(--text);
+line-height: 1.6;
+}
+
+a {
+color: inherit;
+text-decoration: none;
+}
+
+.page {
+overflow: hidden;
+background: var(--dark);
+}
+
+.nav {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+z-index: 50;
+padding: 18px 34px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: rgba(13, 20, 25, 0.72);
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
+border-bottom: 1px solid rgba(199, 164, 90, 0.18);
+}
+
+.nav-logo {
+color: var(--gold);
+letter-spacing: 0.18em;
+font-size: 15px;
+text-transform: uppercase;
+font-weight: 500;
+}
+
+.nav-links {
+display: flex;
+gap: 24px;
+color: var(--milk);
+font-size: 12px;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+}
+
+.nav-links a {
+opacity: 0.78;
+transition: 0.25s ease;
+}
+
+.nav-links a:hover {
+color: var(--gold);
+opacity: 1;
+}
+
+.hero {
+min-height: 100vh;
+background:
+radial-gradient(circle at top, rgba(199, 164, 90, 0.16), transparent 38%),
+radial-gradient(circle at bottom right, rgba(199, 164, 90, 0.08), transparent 34%),
+linear-gradient(135deg, #111a20 0%, #0a1014 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 110px 22px 70px;
+position: relative;
+}
+
+.hero::before {
+content: "";
+position: absolute;
+inset: 30px;
+border: 1px solid rgba(199, 164, 90, 0.42);
+pointer-events: none;
+}
+
+.hero::after {
+content: "";
+position: absolute;
+inset: 42px;
+border: 1px solid rgba(199, 164, 90, 0.13);
+pointer-events: none;
+}
+
+.hero-inner {
+max-width: 1040px;
+text-align: center;
+position: relative;
+z-index: 2;
+}
+
+.logo {
+width: 145px;
+max-width: 36vw;
+height: auto;
+margin: 0 auto 28px;
+display: block;
+filter: drop-shadow(0 0 22px rgba(199, 164, 90, 0.26));
+}
+
+.logo-fallback {
+width: 130px;
+height: 130px;
+margin: 0 auto 28px;
+border: 1px solid rgba(199, 164, 90, 0.62);
+border-radius: 50%;
+display: none;
+align-items: center;
+justify-content: center;
+color: var(--gold);
+font-size: 42px;
+letter-spacing: 0.05em;
+font-weight: 300;
+}
+
+.brand {
+font-size: clamp(48px, 8.2vw, 106px);
+letter-spacing: 0.18em;
+font-weight: 300;
+color: var(--gold);
+margin-left: 0.18em;
+line-height: 1;
+text-transform: uppercase;
+}
+
+.subtitle {
+margin-top: 24px;
+color: var(--milk);
+font-size: clamp(17px, 2.3vw, 28px);
+font-weight: 300;
+letter-spacing: 0.08em;
+text-transform: lowercase;
+}
+
+.hero-text {
+max-width: 790px;
+margin: 26px auto 0;
+color: var(--muted);
+font-size: clamp(16px, 1.8vw, 19px);
+font-weight: 300;
+}
+
+.script {
+font-family: 'Marck Script', cursive;
+color: var(--gold);
+font-size: clamp(30px, 4.2vw, 48px);
+margin-top: 18px;
+}
+
+.buttons {
+display: flex;
+gap: 16px;
+justify-content: center;
+flex-wrap: wrap;
+margin-top: 42px;
+}
+
+.btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-height: 50px;
+padding: 14px 26px;
+border: 1px solid var(--gold);
+color: var(--gold);
+background: transparent;
+font-size: 13px;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+transition: 0.25s ease;
+cursor: pointer;
+}
+
+.btn:hover {
+background: var(--gold);
+color: var(--dark);
+transform: translateY(-2px);
+}
+
+.btn-filled {
+background: var(--gold);
+color: var(--dark);
+}
+
+.btn-filled:hover {
+background: transparent;
+color: var(--gold);
+}
+
+section {
+padding: 110px 22px;
+}
+
+.section-light {
+background:
+linear-gradient(rgba(242, 238, 229, 0.95), rgba(242, 238, 229, 0.95)),
+repeating-linear-gradient(90deg, rgba(0,0,0,0.035) 0 1px, transparent 1px 4px);
+color: var(--dark);
+}
+
+.section-dark {
+background:
+radial-gradient(circle at top left, rgba(199, 164, 90, 0.08), transparent 32%),
+var(--dark-2);
+color: var(--text);
+}
+
+.container {
+max-width: 1140px;
+margin: 0 auto;
+}
+
+.section-kicker {
+color: var(--gold);
+text-transform: uppercase;
+letter-spacing: 0.16em;
+font-size: 12px;
+margin-bottom: 14px;
+font-weight: 500;
+}
+
+.section-light .section-kicker {
+color: var(--gold-soft);
+}
+
+.section-title {
+font-size: clamp(34px, 5vw, 64px);
+font-weight: 300;
+color: var(--gold);
+margin-bottom: 28px;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+line-height: 1.1;
+}
+
+.section-light .section-title {
+color: var(--gold-soft);
+}
+
+.lead {
+font-size: clamp(20px, 2.2vw, 30px);
+line-height: 1.5;
+max-width: 900px;
+font-weight: 300;
+margin-bottom: 28px;
+}
+
+.text {
+max-width: 850px;
+color: inherit;
+opacity: 0.82;
+font-size: 18px;
+font-weight: 300;
+}
+
+.about-layout {
+display: grid;
+grid-template-columns: 1.15fr 0.85fr;
+gap: 48px;
+align-items: center;
+}
+
+.about-video-box {
+min-height: 390px;
+border: none !important;
+outline: none !important;
+box-shadow: none !important;
+background: transparent !important;
+position: relative;
+overflow: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
+aspect-ratio: 4 / 5;
+}
+
+.about-video-box::before,
+.about-video-box::after {
+content: none !important;
+display: none !important;
+border: none !important;
+background: none !important;
+box-shadow: none !important;
+outline: none !important;
+}
+
+.about-video {
+width: 100%;
+height: 100%;
+min-height: 390px;
+object-fit: cover;
+display: block;
+position: relative;
+z-index: 1;
+background: transparent !important;
+border: none !important;
+outline: none !important;
+box-shadow: none !important;
+}
+
+.video-fallback {
+position: absolute;
+inset: 0;
+z-index: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 30px;
+text-align: center;
+color: var(--gold-soft);
+font-size: 18px;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+background: transparent;
+pointer-events: none;
+}
+
+.video-note {
+margin-top: 14px;
+color: rgba(17, 26, 32, 0.55);
+font-size: 14px;
+line-height: 1.5;
+}
+
+.grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 18px;
+margin-top: 46px;
+}
+
+.grid-4 {
+grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+border: 1px solid rgba(199, 164, 90, 0.45);
+padding: 28px 24px;
+min-height: 190px;
+background: rgba(255,255,255,0.025);
+transition: 0.25s ease;
+}
+
+.section-light .card {
+background: rgba(255,255,255,0.36);
+border-color: rgba(169, 139, 74, 0.42);
+}
+
+.card:hover {
+transform: translateY(-5px);
+border-color: var(--gold);
+}
+
+.card-number {
+color: var(--gold);
+font-size: 13px;
+letter-spacing: 0.14em;
+margin-bottom: 18px;
+text-transform: uppercase;
+}
+
+.section-light .card-number {
+color: var(--gold-soft);
+}
+
+.card h3 {
+font-size: 20px;
+font-weight: 400;
+margin-bottom: 12px;
+line-height: 1.25;
+}
+
+.card p {
+color: inherit;
+opacity: 0.72;
+font-size: 15px;
+font-weight: 300;
+}
+
+.quote-section {
+padding: 125px 22px;
+background:
+linear-gradient(rgba(17, 26, 32, 0.90), rgba(17, 26, 32, 0.92)),
+radial-gradient(circle at center, rgba(199, 164, 90, 0.22), transparent 50%);
+color: var(--text);
+text-align: center;
+border-top: 1px solid rgba(199, 164, 90, 0.25);
+border-bottom: 1px solid rgba(199, 164, 90, 0.25);
+}
+
+.quote-inner {
+max-width: 980px;
+margin: 0 auto;
+}
+
+.quote-inner p {
+font-size: clamp(28px, 4.6vw, 58px);
+line-height: 1.25;
+font-weight: 300;
+color: var(--milk);
+}
+
+.quote-inner div {
+margin-top: 26px;
+font-family: 'Marck Script', cursive;
+color: var(--gold);
+font-size: clamp(30px, 4vw, 48px);
+}
+
+.process {
+display: grid;
+grid-template-columns: repeat(7, 1fr);
+gap: 10px;
+margin-top: 48px;
+}
+
+.step {
+  border-top: 2px solid #a98b4a;
+  padding-top: 18px;
+  color: #1b252b;
+  font-size: 15px;
+  font-weight: 300;
+  min-height: 90px;
+}
+
+.step span {
+  display: block;
+  color: #8f7439;
+  margin-bottom: 8px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+}
+
+.contacts {
+text-align: center;
+position: relative;
+}
+
+.contacts .logo-small {
+width: 110px;
+max-width: 32vw;
+margin: 0 auto 28px;
+display: block;
+filter: drop-shadow(0 0 18px rgba(199, 164, 90, 0.22));
+}
+
+.contact-title {
+max-width: 860px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.phones {
+margin-top: 34px;
+font-size: clamp(24px, 4vw, 42px);
+color: var(--gold);
+font-weight: 300;
+line-height: 1.45;
+}
+
+.phones a {
+transition: 0.25s ease;
+}
+
+.phones a:hover {
+color: var(--milk);
+}
+
+.social-link {
+margin-top: 26px;
+font-size: clamp(20px, 2.5vw, 28px);
+color: var(--gold);
+letter-spacing: 0.04em;
+}
+
+.social-link a {
+border-bottom: 1px solid rgba(199, 164, 90, 0.45);
+padding-bottom: 4px;
+transition: 0.25s ease;
+}
+
+.social-link a:hover {
+color: var(--milk);
+border-color: var(--milk);
+}
+
+.footer {
+padding: 30px 22px;
+background: var(--dark-3);
+text-align: center;
+color: rgba(242, 238, 229, 0.45);
+font-size: 14px;
+}
+
+@media (max-width: 1040px) {
+.grid {
+grid-template-columns: repeat(2, 1fr);
+}
+
+.process {
+grid-template-columns: repeat(2, 1fr);
+gap: 22px;
+}
+
+.about-layout {
+grid-template-columns: 1fr;
+}
+
+.about-video-box {
+max-width: 520px;
+width: 100%;
+margin: 0 auto;
+}
+}
+
+@media (max-width: 760px) {
+.nav {
+padding: 16px 18px;
+}
+
+.nav-links {
+display: none;
+}
+
+.hero::before {
+inset: 16px;
+}
+
+.hero::after {
+inset: 24px;
+}
+
+.hero {
+padding-top: 96px;
+}
+
+section {
+padding: 78px 18px;
+}
+
+.grid {
+grid-template-columns: 1fr;
+}
+
+.process {
+grid-template-columns: 1fr;
+}
+
+.brand {
+letter-spacing: 0.12em;
+margin-left: 0.12em;
+}
+
+.subtitle {
+letter-spacing: 0.03em;
+}
+
+.buttons {
+flex-direction: column;
+align-items: stretch;
+max-width: 340px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.btn {
+width: 100%;
+}
+
+.about-video-box {
+min-height: 360px;
+aspect-ratio: 9 / 14;
+}
+
+.about-video {
+min-height: 360px;
+}
+
+.video-note {
+font-size: 13px;
+}
+}
+
+@media (max-width: 420px) {
+.about-video-box {
+min-height: 330px;
+}
+
+.about-video {
+min-height: 330px;
+}
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<nav class="nav">
+<a href="#top" class="nav-logo">РУППИН</a>
+
+<div class="nav-links">
+<a href="#about">О нас</a>
+<a href="#services">Услуги</a>
+<a href="#formats">Форматы</a>
+<a href="#process">Процесс</a>
+<a href="#contacts">Контакты</a>
+</div>
+</nav>
+
+<header class="hero" id="top">
+<div class="hero-inner">
+
+<img src="logo.png" alt="Руппин" class="logo" onerror="this.style.display='none'; document.querySelector('.logo-fallback').style.display='flex';">
+<div class="logo-fallback">Р</div>
+
+<h1 class="brand">Руппин</h1>
+
+<div class="subtitle">продакшн-агентство полного цикла</div>
+
+<p class="hero-text">
+Создаём медиаконтент для бизнеса, артистов, событий и авторских проектов:
+от идеи и сценария до съёмки, музыки, монтажа и финального результата.
+</p>
+
+<div class="script">стиль без срока годности.</div>
+
+<div class="buttons">
+<a href="#contacts" class="btn btn-filled">Обсудить проект</a>
+<a href="#services" class="btn">Наши услуги</a>
+</div>
+</div>
+</header>
+
+<section class="section-light" id="about">
+<div class="container">
+<div class="about-layout">
+<div>
+<div class="section-kicker">О продакшне</div>
+<h2 class="section-title">О нас</h2>
+
+<p class="lead">
+«Руппин» — продакшн-агентство полного цикла.
+</p>
+
+<p class="text">
+Мы создаём медиаконтент, который соединяет идею, визуальный стиль,
+сценарий, музыку и продакшн. Работаем с рекламными роликами,
+съёмкой мероприятий, музыкальными клипами, мини-сериалами,
+короткометражными фильмами и авторскими проектами.
+<br><br>
+Нам важно, чтобы каждый материал был не просто снят, а собран
+в цельную историю: с атмосферой, ритмом и узнаваемой подачей.
+</p>
+
+</div>
+
+<div class="about-video-box">
+<div class="video-fallback">
+Загрузите about-video.mp4
+</div>
+
+<video
+class="about-video"
+autoplay
+muted
+loop
+playsinline
+preload="metadata"
+controls
+>
+<source src="about-video.mp4" type="video/mp4">
+Ваш браузер не поддерживает видео.
+</video>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section-dark" id="services">
+<div class="container">
+<div class="section-kicker">Что делаем</div>
+<h2 class="section-title">Услуги</h2>
+
+<p class="lead">
+Берём на себя весь путь создания медиаконтента — от идеи и сценария
+до монтажа, музыки и финальной подачи.
+</p>
+
+<div class="grid">
+<div class="card">
+<div class="card-number">01</div>
+<h3>Съёмка мероприятий</h3>
+<p>Живой репортаж, атмосфера события, эмоции, детали и динамика.</p>
+</div>
+
+<div class="card">
+<div class="card-number">02</div>
+<h3>Рекламные ролики</h3>
+<p>Видео для брендов, продуктов, услуг, запусков и социальных сетей.</p>
+</div>
+
+<div class="card">
+<div class="card-number">03</div>
+<h3>Музыкальные клипы</h3>
+<p>Визуальная история для трека, артиста, образа и релиза.</p>
+</div>
+
+<div class="card">
+<div class="card-number">04</div>
+<h3>Мини-сериалы</h3>
+<p>Короткие сериальные форматы для брендов, соцсетей и авторских проектов.</p>
+</div>
+
+<div class="card">
+<div class="card-number">05</div>
+<h3>Короткий метр</h3>
+<p>Производство короткометражных фильмов от идеи до финального монтажа.</p>
+</div>
+
+<div class="card">
+<div class="card-number">06</div>
+<h3>Сценарии</h3>
+<p>Сценарная основа для рекламы, клипов, фильмов, роликов и спецпроектов.</p>
+</div>
+
+<div class="card">
+<div class="card-number">07</div>
+<h3>Музыка</h3>
+<p>Авторская музыка в разных жанрах для видео, рекламы, фильмов и заставок.</p>
+</div>
+
+<div class="card">
+<div class="card-number">08</div>
+<h3>Постпродакшн</h3>
+<p>Монтаж, цветокоррекция, звук, графика и адаптация под площадки.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section-light" id="formats">
+<div class="container">
+<div class="section-kicker">Для кого</div>
+<h2 class="section-title">Форматы работы</h2>
+
+<p class="lead">
+Подбираем формат под задачу: от лаконичного ролика для соцсетей
+до полноценной съёмочной истории с концепцией, сценарием, музыкой и постпродакшном.
+</p>
+
+<div class="grid grid-4">
+<div class="card">
+<div class="card-number">A</div>
+<h3>Для бизнеса</h3>
+<p>
+Рекламные ролики, презентационные видео, контент для сайта,
+социальных сетей, мероприятий и запусков.
+</p>
+</div>
+
+<div class="card">
+<div class="card-number">B</div>
+<h3>Для артистов</h3>
+<p>
+Музыкальные клипы, тизеры, live-видео, визуальная упаковка релизов
+и съёмка творческих проектов.
+</p>
+</div>
+
+<div class="card">
+<div class="card-number">C</div>
+<h3>Для событий</h3>
+<p>
+Съёмка концертов, частных мероприятий, корпоративов, презентаций,
+backstage и атмосферных репортажей.
+</p>
+</div>
+
+<div class="card">
+<div class="card-number">D</div>
+<h3>Для авторских проектов</h3>
+<p>
+Мини-сериалы, короткометражные фильмы, сценарная разработка,
+музыка и полное сопровождение производства.
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="quote-section">
+<div class="quote-inner">
+<p>
+Мы создаём не просто видео, а визуальный образ, который работает
+на впечатление, узнаваемость и атмосферу проекта.
+</p>
+<div>стиль без срока годности.</div>
+</div>
+</section>
+
+<section class="section-light" id="process">
+<div class="container">
+<div class="section-kicker">Как работаем</div>
+<h2 class="section-title">Процесс</h2>
+
+<p class="lead">
+Выстраиваем работу так, чтобы идея прошла понятный путь:
+от первого обсуждения до готового медиапродукта.
+</p>
+
+<div class="process">
+<div class="step"><span>01</span>Идея</div>
+<div class="step"><span>02</span>Сценарий</div>
+<div class="step"><span>03</span>Подготовка</div>
+<div class="step"><span>04</span>Съёмка</div>
+<div class="step"><span>05</span>Монтаж</div>
+<div class="step"><span>06</span>Музыка и звук</div>
+<div class="step"><span>07</span>Готовый результат</div>
+</div>
+</div>
+</section>
+
+<section class="section-dark contacts" id="contacts">
+<div class="container">
+
+<img src="logo.png" alt="Руппин" class="logo-small" onerror="this.style.display='none';">
+
+<div class="section-kicker">Связаться</div>
+<h2 class="section-title">Контакты</h2>
+
+<p class="lead contact-title">
+Расскажите нам о вашей идее. Мы поможем определить формат, стиль,
+объём работ и предложим решение под вашу задачу.
+</p>
+
+<div class="phones">
+<a href="tel:+79650543744">+7 965 054-37-44</a><br>
+<a href="tel:+79816968252">+7 981 696-82-52</a>
+</div>
+
+<div class="social-link">
+<a href="https://instagram.com/Ruppin_pro" target="_blank">@Ruppin_pro</a>
+</div>
+
+<div class="buttons">
+<a href="tel:+79650543744" class="btn btn-filled">Позвонить</a>
+<a href="https://wa.me/79650543744" target="_blank" class="btn">WhatsApp</a>
+<a href="https://instagram.com/Ruppin_pro" target="_blank" class="btn">Instagram</a>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+© Руппин. Продакшн-агентство полного цикла.
+</footer>
+
+</div>
+</body>
+</html>
+
